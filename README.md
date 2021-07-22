@@ -1,0 +1,2 @@
+# Hedgehug
+Tamagotchi Discord Bot
