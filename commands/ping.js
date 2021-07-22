@@ -3,5 +3,5 @@ module.exports = {
     description: "Pong!",
     execute(message, args) {
         message.channel.send("Pong!");
-    },
+    }
 }
