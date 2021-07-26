@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const {hedgehugs, user, users} = require("../../sequelize/database.js");
+const {hedgehugs, users} = require("../../sequelize/database.js");
 
 module.exports = {
     name: "clean",
