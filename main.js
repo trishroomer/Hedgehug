@@ -4,26 +4,26 @@ const client = new Discord.Client();
 
 const {hedgehugs, users, items, user_items} = require("./sequelize/database.js");
 
-const prefix = 'h/';
-
 client.once("ready", () => {
     console.log("Ready!");
-    hedgehugs.sync(); 
-    users.sync();
-    items.sync(); 
-    user_items.sync();
+    hedgehugs.sync().then(users.sync()).then(items.sync()).then(user_items.sync());
     client.user.setPresence({activity: {name: prefix + "help | " + prefix + "start"}});
 });
 
 const config = require("./config.json");
 client.login(config.token);
 
-client.commands = new Discord.Collection();
-const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"));
+const prefix = config.prefix;
 
-for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
+client.commands = new Discord.Collection();
+const commands_folder = fs.readdirSync("./commands")
+
+for (const folder of commands_folder) {
+	const command_files = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+    for (const file of command_files) {
+        const command = require(`./commands/${folder}/${file}`);
+        client.commands.set(command.name, command);
+    }
 }
 
 client.on("message", message => {
