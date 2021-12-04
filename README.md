@@ -1,2 +1,2 @@
 # Hedgehug
-Tamagotchi Discord Bot
+Tamagotchi Discord Bot made with Sequelize
