@@ -3,7 +3,7 @@ const {hedgehugs, users} = require("../../sequelize/database.js");
 
 module.exports = {
     name: "clean",
-    aliases: ["wash, bathe"],
+    aliases: ["wash",  "bathe"],
     description: "Increases your Hedgehug's hygiene",
     async execute(message) {
         const hedgehug = await hedgehugs.findOne({
